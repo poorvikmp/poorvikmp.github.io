@@ -6,13 +6,12 @@
   <title>Poorvik | Quantitative Finance Portfolio</title>
   <meta name="description" content="Poorvik designs and backtests systematic investment strategies in Python, with an emphasis on honest out-of-sample testing.">
 
-  <!-- Link preview for LinkedIn, Slack, iMessage etc.
-       EDIT: replace YOUR-USERNAME once the site is on GitHub Pages. -->
+  <!-- Link preview for LinkedIn, Slack, iMessage etc. -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Poorvik | Quantitative Finance Portfolio">
   <meta property="og:description" content="I build investment strategies, then try to break them.">
-  <meta property="og:url" content="https://YOUR-USERNAME.github.io/">
-  <meta property="og:image" content="https://YOUR-USERNAME.github.io/images/og-image.png">
+  <meta property="og:url" content="https://poorvikmp.github.io/">
+  <meta property="og:image" content="https://poorvikmp.github.io/images/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -55,7 +54,7 @@
           Résumé</a>
         <div class="icon-links">
           <!-- EDIT: your GitHub, LinkedIn and email -->
-          <a href="https://github.com/YOUR-USERNAME" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
+          <a href="https://github.com/poorvikmp" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
           <a href="https://www.linkedin.com/in/YOUR-PROFILE" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
           <a href="mailto:YOUR-EMAIL" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
         </div>
@@ -91,7 +90,7 @@
           </div>
         </a>
 
-        <!-- Project 2: same layout, with the correlation bar chart -->
+        <!-- Project 2: same layout, with the rolling correlation chart -->
         <a class="featured panel" href="cross-asset-events.html">
           <div class="text">
             <p class="eyebrow">Project 2</p>
@@ -107,17 +106,17 @@
           </div>
           <div class="viz">
             <div class="chart-legend">
-              <span><i class="sw s-growth"></i>Growth regime</span>
-              <span><i class="sw s-infl"></i>Inflation regime</span>
+              <span><i class="sw s-infl"></i>Move together (inflation regime)</span>
+              <span><i class="sw s-growth"></i>Bonds hedge stocks</span>
             </div>
             <div class="chart" data-corr-chart data-mini></div>
-            <p class="cap">Stock-bond correlation by type of day, 2006–2026</p>
+            <p class="cap">Rolling 3-month stock-bond correlation (SPY vs IEF), 2006–2026</p>
           </div>
         </a>
 
         <!-- EDIT: MORE PROJECTS. To show this grid, delete this whole line and the END line below. Copy the card once per project.
         <div class="grid">
-          <a class="card panel" href="https://github.com/YOUR-USERNAME/your-repo">
+          <a class="card panel" href="https://github.com/poorvikmp/your-repo">
             <p class="eyebrow">Category</p>
             <h3>Project name</h3>
             <p>One or two sentences: the question, what you built, and what you found.</p>
@@ -199,7 +198,7 @@
           <div class="actions">
             <a class="btn btn-primary" href="mailto:YOUR-EMAIL">Email me</a>
             <a class="btn btn-ghost" href="https://www.linkedin.com/in/YOUR-PROFILE">LinkedIn</a>
-            <a class="btn btn-ghost" href="https://github.com/YOUR-USERNAME">GitHub</a>
+            <a class="btn btn-ghost" href="https://github.com/poorvikmp">GitHub</a>
           </div>
         </div>
       </div>
@@ -216,6 +215,7 @@
 
   <script src="growth-data.js"></script>
   <script src="chart.js"></script>
+  <script src="corr-data.js"></script>
   <script src="corr-chart.js"></script>
 </body>
 </html>

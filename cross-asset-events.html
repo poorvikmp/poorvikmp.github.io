@@ -6,12 +6,12 @@
   <title>Cross-Asset Correlation Regime Decomposition Study | Poorvik</title>
   <meta name="description" content="When does the stock-bond hedge fail, and can you trade it? An event study of 20 years of CPI releases and Fed decisions.">
 
-  <!-- EDIT: replace YOUR-USERNAME once the site is on GitHub Pages -->
+  <!-- Link preview for LinkedIn, Slack, iMessage etc. -->
   <meta property="og:type" content="article">
   <meta property="og:title" content="Cross-Asset Correlation Regime Decomposition Study | Poorvik">
   <meta property="og:description" content="When does the stock-bond hedge fail, and can you trade it? 20 years of CPI and Fed days, tested.">
-  <meta property="og:url" content="https://YOUR-USERNAME.github.io/cross-asset-events.html">
-  <meta property="og:image" content="https://YOUR-USERNAME.github.io/images/og-image.png">
+  <meta property="og:url" content="https://poorvikmp.github.io/cross-asset-events.html">
+  <meta property="og:image" content="https://poorvikmp.github.io/images/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -48,17 +48,17 @@
         <div><dt>Role</dt><dd>Solo project</dd></div>
         <div><dt>Tools</dt><dd>Python, pandas, statsmodels</dd></div>
         <div><dt>Data</dt><dd>Daily, 2006–2026</dd></div>
-        <!-- EDIT: point this at your GitHub repo -->
-        <div><dt>Code</dt><dd><a href="https://github.com/YOUR-USERNAME/cross-asset-events">View on GitHub</a></dd></div>
+        <!-- EDIT: create this repo on GitHub so the link works -->
+        <div><dt>Code</dt><dd><a href="https://github.com/poorvikmp/cross-asset-events">View on GitHub</a></dd></div>
       </dl>
     </div>
 
-    <!-- Interactive chart: hover (or tap) a bar to read its value -->
+    <!-- Interactive chart: hover (or tap) to read the value for any week -->
     <div class="hero-chart panel">
-      <h2>Stock-bond correlation by type of day</h2>
+      <h2>Stock-bond correlation over the previous 3 months (SPY vs IEF)</h2>
       <div class="chart-legend">
-        <span><i class="sw s-growth"></i>Growth regime (stocks and bonds usually move apart)</span>
-        <span><i class="sw s-infl"></i>Inflation regime (they usually move together)</span>
+        <span><i class="sw s-infl"></i>Above zero: inflation regime, stocks and bonds fall together</span>
+        <span><i class="sw s-growth"></i>Below zero: growth regime, bonds hedge stocks</span>
       </div>
       <div class="chart" data-corr-chart></div>
     </div>
@@ -116,10 +116,7 @@
             </tbody>
           </table>
         </div>
-        <figure>
-          <img src="images/p2_1_regimes.png" alt="Rolling 63-day stock-bond correlation from 2006 to 2026, mostly negative until 2021 and mostly positive after" loading="lazy">
-          <figcaption>The inflation regime covers 23% of days: briefly in 2006–07 and 2013, then most of the time from 2021 onward.</figcaption>
-        </figure>
+        <p>The chart at the top of this page shows the regime over time. The inflation regime covers 23% of days: briefly in 2006–07 and 2013, then most of the time from 2021 onward.</p>
 
         <h2 id="f1">Finding 1: the hedge fails on CPI and Fed days, not on jobs days</h2>
         <div class="table-scroll">
@@ -132,6 +129,10 @@
           </table>
         </div>
         <p>A luck test with 2,000 random sets of normal days gives p ≈ 0.01 for CPI and 0.04 for FOMC in the inflation regime. Jobs days are indistinguishable from normal days (p ≈ 0.5). Equity volatility on inflation-regime CPI days is about 50% higher than on normal days, and CPI days, just 5% of trading days, produced 14% of the stock-bond co-movement in 2022.</p>
+        <figure>
+          <img src="images/p2_2_corr_by_daytype.png" alt="Bar chart of stock-bond correlation on CPI, FOMC, jobs and normal days, split by regime" loading="lazy">
+          <figcaption>In the inflation regime, CPI and Fed days turn stocks and bonds into twins.</figcaption>
+        </figure>
 
         <h2 id="f2">Finding 2: the same surprise means opposite things</h2>
         <p>S&amp;P 500 return per +10bp move in the 5-year yield on the event day:</p>
@@ -199,8 +200,8 @@
             <h3>Want to see the code?</h3>
             <p>The notebook walks through all six steps, and every setting is at the top.</p>
           </div>
-          <!-- EDIT: point this at your GitHub repo -->
-          <a class="btn btn-primary" href="https://github.com/YOUR-USERNAME/cross-asset-events">View on GitHub</a>
+          <!-- EDIT: create this repo on GitHub so the link works -->
+          <a class="btn btn-primary" href="https://github.com/poorvikmp/cross-asset-events">View on GitHub</a>
         </div>
 
         <a class="next-project panel pager" href="regime-allocation.html">
@@ -222,6 +223,7 @@
     </div>
   </footer>
 
+  <script src="corr-data.js"></script>
   <script src="corr-chart.js"></script>
 </body>
 </html>

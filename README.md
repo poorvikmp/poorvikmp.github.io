@@ -11,7 +11,8 @@ Plain HTML, CSS and a little JavaScript. There's no framework and no build step,
 | `cross-asset-events.html` | Project 2 case study: the CPI and Fed event study |
 | `style.css` | All the styling. Colours and fonts are the "design tokens" at the top |
 | `chart.js` | Draws Project 1's interactive growth-of-$1 chart |
-| `corr-chart.js` | Draws Project 2's interactive correlation bar chart |
+| `corr-chart.js` | Draws Project 2's interactive rolling-correlation chart |
+| `corr-data.js` | The weekly stock-bond correlation behind that chart, from `event_lib.py` |
 | `growth-data.js` | The numbers behind that chart, exported from `regime_lib.py` |
 | `favicon.svg` | The little "P" icon in the browser tab |
 | `images/` | Project charts (Project 2's start with `p2_`), plus `og-image.png`, the preview card LinkedIn shows |
@@ -20,7 +21,7 @@ Plain HTML, CSS and a little JavaScript. There's no framework and no build step,
 
 Search the files for `EDIT:` to find each one.
 
-1. **Links.** Replace `YOUR-USERNAME` (GitHub), `YOUR-PROFILE` (LinkedIn) and `YOUR-EMAIL` in `index.html` and `regime-allocation.html`.
+1. **Links.** Replace `YOUR-PROFILE` (LinkedIn) and `YOUR-EMAIL` in `index.html`. (The GitHub links already use `poorvikmp`.)
 2. **Résumé.** Save your résumé in this folder as `resume.pdf`. The Résumé button links to it.
 3. **About.** Add a sentence about your school, degree or current role.
 4. **Project code.** Upload each project to its own GitHub repo, `regime-allocation` and `cross-asset-events` (see below), so the "View on GitHub" buttons work.
@@ -36,7 +37,7 @@ In `index.html`, find `MORE PROJECTS`. Delete that line and the `END -->` line b
 ## Publish it free on GitHub Pages
 
 1. Sign up at github.com. Your username becomes your web address.
-2. Click **+ → New repository**, name it exactly `<username>.github.io`, make it **Public**, and click **Create**.
+2. Click **+ → New repository**, name it exactly `poorvikmp.github.io`, make it **Public**, and click **Create**.
 3. Click **uploading an existing file**, drag in *everything inside* this folder (including the `images` folder), then **Commit changes**.
 4. Go to **Settings → Pages**. Set *Source* to **Deploy from a branch**, branch **main**, folder **/ (root)**, then **Save**.
 5. After a minute or two, visit `https://<username>.github.io`.

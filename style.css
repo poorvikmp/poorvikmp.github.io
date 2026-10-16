@@ -165,12 +165,14 @@ footer a { color: var(--muted); }
 .sw.s-b { background: var(--series-b); }
 .sw.s-growth { background: var(--series-growth); height: 10px; width: 10px; }
 .sw.s-infl { background: var(--series-infl); height: 10px; width: 10px; }
-.c-bar.s-growth { fill: var(--series-growth); }
-.c-bar.s-infl { fill: var(--series-infl); }
-.c-cat { fill: var(--muted); font-size: 13px; font-weight: 500; }
-.c-val { fill: var(--muted); font-size: 12.5px; }
-.c-val.hot { fill: var(--text); font-weight: 700; }
-.c-val.sm { font-size: 11px; }
+.c-area { stroke: none; fill-opacity: .22; }
+.c-area.s-growth { fill: var(--series-growth); }
+.c-area.s-infl { fill: var(--series-infl); }
+.c-line.s-growth { stroke: var(--series-growth); stroke-width: 1.5; }
+.c-line.s-infl { stroke: var(--series-infl); stroke-width: 1.5; }
+.c-dot.s-growth { fill: var(--series-growth); }
+.c-dot.s-infl { fill: var(--series-infl); }
+.c-zero { stroke: var(--muted); stroke-width: 1; }
 .c-line { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
 .c-line.s-v2 { stroke: var(--series-v2); }
 .c-line.s-b { stroke: var(--series-b); }
