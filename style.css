@@ -24,6 +24,9 @@
   --series-b: #eb6834;        /* 60/40 is orange in every chart */
   --series-growth: #2a78d6;   /* Project 2: growth regime */
   --series-infl: #eb6834;     /* Project 2: inflation regime */
+  --series-dotcom: #2a78d6;   /* Project 3: dot-com leaders */
+  --series-housing: #eb6834;  /* Project 3: housing leaders */
+  --series-ai: #1baf7a;       /* Project 3: AI leaders */
   --band: rgba(74, 58, 167, 0.06);
   --shadow: 0 1px 2px rgba(20, 20, 30, .04), 0 8px 24px rgba(20, 20, 30, .06);
 
@@ -50,6 +53,9 @@
     --series-b: #d95926;
     --series-growth: #3987e5;
     --series-infl: #d95926;
+    --series-dotcom: #3987e5;
+    --series-housing: #d95926;
+    --series-ai: #199e70;
     --band: rgba(166, 157, 242, 0.07);
     --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .25);
   }
@@ -173,6 +179,15 @@ footer a { color: var(--muted); }
 .c-dot.s-growth { fill: var(--series-growth); }
 .c-dot.s-infl { fill: var(--series-infl); }
 .c-zero { stroke: var(--muted); stroke-width: 1; }
+.sw.s-dotcom { background: var(--series-dotcom); }
+.sw.s-housing { background: var(--series-housing); }
+.sw.s-ai { background: var(--series-ai); }
+.c-line.s-dotcom { stroke: var(--series-dotcom); stroke-width: 1.75; }
+.c-line.s-housing { stroke: var(--series-housing); stroke-width: 1.75; }
+.c-line.s-ai { stroke: var(--series-ai); stroke-width: 2.5; }
+.c-dot.s-dotcom { fill: var(--series-dotcom); }
+.c-dot.s-housing { fill: var(--series-housing); }
+.c-dot.s-ai { fill: var(--series-ai); }
 .c-line { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
 .c-line.s-v2 { stroke: var(--series-v2); }
 .c-line.s-b { stroke: var(--series-b); }
@@ -186,6 +201,8 @@ footer a { color: var(--muted); }
 .c-tick { fill: var(--faint); font-size: 12px; }
 .c-note { fill: var(--muted); font-size: 12px; font-weight: 500; }
 .c-end { fill: var(--text); font-size: 12.5px; font-weight: 600; }
+.nowrap { white-space: nowrap; }
+.c-halo { paint-order: stroke; stroke: var(--surface); stroke-width: 4px; stroke-linejoin: round; }
 .c-tip {
   position: absolute; pointer-events: none; min-width: 168px;
   background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
@@ -311,6 +328,9 @@ a.pager:hover { transform: translateY(-2px); color: inherit; }
 table.wrap-cells td { white-space: normal; text-align: left; vertical-align: top; }
 table.wrap-cells th { text-align: left; }
 table.wrap-cells td:first-child { font-weight: 600; white-space: nowrap; }
+table.compact th { white-space: normal; vertical-align: bottom; }
+table.compact th, table.compact td { padding: 10px 8px; }
+table.compact td:first-child { white-space: normal; min-width: 150px; }
 
 /* ---------- Small screens ---------- */
 @media (max-width: 900px) {

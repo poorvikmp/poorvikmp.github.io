@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anatomy of a Bubble: AI vs Dot-Com vs Housing | Poorvik</title>
+  <meta name="description" content="Is the AI boom a bubble, and what can an ordinary investor do about it? Three booms measured with the same yardsticks, an early-warning test on 100 years of industry data, and a retail protection playbook.">
+
+  <!-- Link preview for LinkedIn, Slack, iMessage etc. -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Anatomy of a Bubble: AI vs Dot-Com vs Housing | Poorvik">
+  <meta property="og:description" content="Is the AI boom a bubble? Three booms on the same yardsticks, an early-warning test since 1926, and what protection really costs.">
+  <meta property="og:url" content="https://poorvikmp.github.io/ai-bubble.html">
+  <meta property="og:image" content="https://poorvikmp.github.io/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="index.html"><span class="mark">P</span>Poorvik</a>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="index.html#work">Work</a></li>
+          <li class="hide-sm"><a href="index.html#skills">Skills</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+
+    <div class="case-head">
+      <a class="back" href="index.html#work">← All work</a>
+      <p class="eyebrow">Project 3 · Market history and risk</p>
+      <h1>Anatomy of a Bubble: AI vs <span class="nowrap">Dot-Com</span> vs Housing</h1>
+      <p class="lede">Is the AI boom a bubble, and what can an ordinary investor do about it? I put the three big booms of the last 30 years through the same measurements, tested an early-warning signal on every US industry since 1926, and priced six ways to protect a portfolio.</p>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>Solo project</dd></div>
+        <div><dt>Tools</dt><dd>Python, pandas, NumPy</dd></div>
+        <div><dt>Data</dt><dd>Daily 1990–2026, industries since 1926</dd></div>
+        <!-- EDIT: create this repo on GitHub so the link works -->
+        <div><dt>Code</dt><dd><a href="https://github.com/poorvikmp/ai-bubble">View on GitHub</a></dd></div>
+      </dl>
+    </div>
+
+    <!-- Interactive chart: hover (or tap) to compare the three booms at the same point -->
+    <div class="hero-chart panel">
+      <h2>Three booms on one clock: growth of $1 in each boom's leader stocks (log scale)</h2>
+      <div class="chart-legend">
+        <span><i class="sw s-dotcom"></i>Dot-com leaders, from Apr 1995</span>
+        <span><i class="sw s-housing"></i>Housing leaders, from Jul 2000</span>
+        <span><i class="sw s-ai"></i>AI leaders, from Nov 2022</span>
+      </div>
+      <div class="chart" data-race-chart></div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">44%</div><div class="label">Tech's share of the US stock market (43% at the March 2000 peak)</div></div>
+      <div class="stat"><div class="num">70%</div><div class="label">of the S&amp;P 500's AI-era gain explained by earnings (dot-com: 47%)</div></div>
+      <div class="stat"><div class="num">80%</div><div class="label">of 3–4 red-flag industry run-ups crashed after 1990 (4 of 5)</div></div>
+      <div class="stat"><div class="num">2 of 4</div><div class="label">red flags showing in chips and computer hardware today</div></div>
+    </div>
+
+    <div class="tldr panel">
+      <h2>Summary</h2>
+      <ul>
+        <li><strong>AI is an expensive, very concentrated boom with real earnings under it.</strong> Tech is 44% of the US stock market, level with the March 2000 peak (43%). Chip makers alone are 22%, double their dot-com share. The S&amp;P 500's CAPE is 40.7, second only to the dot-com years.</li>
+        <li><strong>Its price path looks calmer than late 1999.</strong> Four years in, the AI leaders are up about 7x, almost exactly where the dot-com leaders were at the same point. But their climb has been flattening since late 2024, while the dot-com leaders were still accelerating when they peaked.</li>
+        <li><strong>Earnings are doing more of the work.</strong> They explain about 70% of the S&amp;P 500's AI-era gain, against 47% in the dot-com boom. Housing is the warning: earnings looked real then too, until the bank profits behind them collapsed.</li>
+        <li><strong>An early-warning test works out of sample, but most run-ups don't crash.</strong> Industry run-ups with 3–4 red flags crashed 80% of the time after 1990. Chips and computer hardware show 2 of 4 today.</li>
+        <li><strong>Every protection has a visible cost.</strong> A 10-month trend rule made money in both crashes and matched buy-and-hold over 33 years with half the worst fall, but it has caught only +64% of the AI boom's +110%.</li>
+      </ul>
+    </div>
+
+    <div class="case-body">
+      <aside class="toc" aria-label="On this page">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#question">The question</a></li>
+          <li><a href="#method">Data and method</a></li>
+          <li><a href="#f1">Finding 1: the price path</a></li>
+          <li><a href="#f2">Finding 2: concentration</a></li>
+          <li><a href="#f3">Finding 3: earnings</a></li>
+          <li><a href="#warning">Can you see a crash coming?</a></li>
+          <li><a href="#playbook">The retail playbook</a></li>
+          <li><a href="#meaning">What it means</a></li>
+          <li><a href="#limits">Limitations</a></li>
+        </ol>
+      </aside>
+
+      <article class="article">
+
+        <h2 id="question">The question</h2>
+        <p>"Is it a bubble?" is usually answered with stories. This study puts the three big booms of the last 30 years through the same measurements: speed, acceleration, volatility, concentration, valuation and earnings.</p>
+        <p>A bubble can only be proven after it pops, so I don't try to call the top. The honest goals are to show where AI sits on the path, and what it costs an ordinary investor to protect against a crash.</p>
+
+        <h2 id="method">Data and method</h2>
+        <p>Daily prices from January 1990 to October 2026, Shiller's S&amp;P 500 valuation data, and Kenneth French's 49 US industries back to 1926, which give 69 industry run-ups (66 with a known outcome).</p>
+        <div class="table-scroll">
+          <table class="wrap-cells">
+            <thead><tr><th>Piece</th><th>Choice</th></tr></thead>
+            <tbody>
+              <tr><td>Leaders</td><td>Equal-weighted baskets. Dot-com: CSCO, INTC, MSFT, ORCL, QCOM. Housing: LEN, DHI, KBH, PHM, TOL. AI: NVDA, MSFT, GOOGL, META, AMZN, AVGO, TSM</td></tr>
+              <tr><td>Boom dates</td><td>Peak = highest close; start = lowest close in the 5 years before it. One mechanical rule, so dates can't be cherry-picked. It chose November 2022 for AI, the month ChatGPT launched</td></tr>
+              <tr><td>Valuation</td><td>Shiller CAPE (price over 10-year average real earnings) and S&amp;P 500 earnings, monthly since 1871</td></tr>
+              <tr><td>Concentration</td><td>Each sector's share of total US market value, from French's industry data, which includes firms that no longer exist</td></tr>
+              <tr><td>Warning test</td><td>Greenwood, Shleifer &amp; You (2019): an industry doubles in 2 years and beats the market by 100 points. A crash is a 40% fall within the next 2 years</td></tr>
+              <tr><td>Train / test</td><td>Red-flag cut-offs set on pre-1990 run-ups only. Dot-com, housing and the 2020s are all out of sample</td></tr>
+              <tr><td>Playbook</td><td>Monthly rules using SPY, IEF (bonds), RSP (equal weight) and index puts, with a 5bp trading cost</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>The chart at the top of this page lines the three booms up by months since each one started. Hover over it to compare them at the same point.</p>
+
+        <h2 id="f1">Finding 1: AI is on the dot-com path in price, but not in acceleration</h2>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>At the peak (AI: so far)</th><th>Dot-com</th><th>Housing</th><th>AI</th></tr></thead>
+            <tbody>
+              <tr><td>Months since start</td><td>60</td><td>60</td><td>47</td></tr>
+              <tr><td>Leader basket growth</td><td>29.8x</td><td>9.6x</td><td>7.1x</td></tr>
+              <tr><td>Leaders' 2-year return</td><td>+669%</td><td>+214%</td><td>+79%</td></tr>
+              <tr class="highlight"><td>Acceleration (1-year return minus the year before)</td><td>+182%</td><td>+86%</td><td>−22%</td></tr>
+              <tr><td>Volatility (3-month, annualised)</td><td>50%</td><td>29%</td><td>22%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>The AI leaders looked most bubble-like in 2023–2024. Since then the climb has flattened rather than gone vertical: their two-year return has fallen from +294% in November 2024 to +79%. The exception is chips, where the semiconductor index nearly doubled from March to June 2026, then fell almost 30% by late July.</p>
+        <figure>
+          <img src="images/p3_2_fingerprints.png" alt="Three panels comparing the dot-com, housing and AI leaders by months since each boom started: two-year return, acceleration and volatility" loading="lazy">
+          <figcaption>Dot-com went vertical and kept accelerating into its peak. AI's acceleration has turned negative.</figcaption>
+        </figure>
+
+        <h2 id="f2">Finding 2: concentration is the real outlier</h2>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th></th><th>Dot-com peak</th><th>Housing peak</th><th>AI today</th></tr></thead>
+            <tbody>
+              <tr><td>S&amp;P 500 CAPE</td><td>43.2</td><td>26.3</td><td>40.7</td></tr>
+              <tr class="highlight"><td>Tech share of US market</td><td>43%</td><td>20%</td><td>44%</td></tr>
+              <tr class="highlight"><td>Chips share of US market</td><td>11%</td><td>5%</td><td>22%</td></tr>
+              <tr><td>Housing and finance share</td><td>14%</td><td>23%</td><td>13%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>An S&amp;P 500 index fund today is at least as exposed to tech as it was in 2000, and twice as exposed to one industry, chips. Housing barely registered on these gauges because it was a debt bubble: the overpriced asset was houses, not stocks.</p>
+        <figure>
+          <img src="images/p3_3_concentration_valuation.png" alt="Two panels from 1990 to 2026: tech, chips and housing-and-finance shares of the US stock market, and the Shiller CAPE ratio, with the three booms shaded" loading="lazy">
+          <figcaption>Tech's share is back at its 2000 high, and chips' share is double it. CAPE is close behind the dot-com peak.</figcaption>
+        </figure>
+
+        <h2 id="f3">Finding 3: earnings are doing more of the work this time</h2>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>S&amp;P 500 boom</th><th>Price</th><th>Earnings</th><th>P/E change</th><th>Share of gain from earnings</th></tr></thead>
+            <tbody>
+              <tr><td>Dot-com (Dec 1994 to Aug 2000)</td><td>+226%</td><td>+74%</td><td>+88%</td><td>47%</td></tr>
+              <tr><td>Housing (Apr 2003 to Oct 2007)</td><td>+73%</td><td>+135%</td><td>−26%</td><td>156%</td></tr>
+              <tr class="highlight"><td>AI (Oct 2022 to Jun 2026)</td><td>+100%</td><td>+62%</td><td>+23%</td><td>70%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>This is the strongest evidence against calling AI a dot-com rerun. Housing shows the caveat: earnings can be inflated by the boom itself, and the AI leaders' profits depend on everyone else continuing to spend on AI.</p>
+        <figure>
+          <img src="images/p3_4_earnings_vs_price.png" alt="Bar chart of S&amp;P 500 price and earnings growth in the dot-com, housing and AI booms" loading="lazy">
+          <figcaption>In the dot-com boom, prices ran three times faster than earnings. In the AI boom, earnings have kept closer.</figcaption>
+        </figure>
+
+        <h2 id="warning">Can you see a crash coming?</h2>
+        <p>Across all 49 industries since 1926, a run-up roughly triples the chance of a crash: 38%, against an 11% base rate. But most run-ups don't crash, and on average the industry still returned +7% over the next two years (the market: +11%). "It doubled, so sell" is wrong more often than right.</p>
+        <p>A red-flag count does better. It scores four flags, each with a cut-off set before 1990: acceleration, volatility, growth in the number of listed firms (an IPO wave), and the size of the run-up.</p>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Red flags</th><th>Crash rate 1926–1989 (train)</th><th>Crash rate 1990–2024 (test)</th></tr></thead>
+            <tbody>
+              <tr><td>0–1</td><td>22% (18 run-ups)</td><td>30% (10)</td></tr>
+              <tr><td>2</td><td>42% (12)</td><td>22% (9)</td></tr>
+              <tr class="highlight"><td>3–4</td><td>58% (12)</td><td>80% (5)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>After a 3–4 flag run-up, the median industry did 35 points worse than the market over the next two years. Dot-com software (March 1999) and chips (December 1999) both had 3 flags and crashed. Housing showed up only as construction in December 2004, which fired too early: the homebuilders kept rising for another seven months.</p>
+        <figure>
+          <img src="images/p3_5_warning_test.png" alt="Bar chart of the share of industry run-ups that crashed 40% within two years, by number of red flags, for 1926 to 1989 and 1990 to 2024" loading="lazy">
+          <figcaption>More red flags, more crashes, before and after 1990.</figcaption>
+        </figure>
+        <div class="callout">
+          <p><strong>Where AI stands today.</strong> Chips came within 3 points of formally triggering in December 2024 (up 156%, 97 points ahead of the market), and computer hardware triggered in May 2026. Both show 2 of 4 flags. There is no IPO wave, since the number of listed chip companies is falling, and acceleration has cooled.</p>
+        </div>
+
+        <h2 id="playbook">The retail investor's playbook</h2>
+        <p>Six things anyone can do in a brokerage account, tested through both crashes and the AI boom so far:</p>
+        <div class="table-scroll">
+          <table class="compact">
+            <thead><tr><th>Rule</th><th><span class="nowrap">Dot-com</span> boom</th><th><span class="nowrap">Dot-com</span> bust</th><th>Housing boom</th><th>Housing bust</th><th>AI boom so far</th><th>Worst fall</th><th>Yearly return</th></tr></thead>
+            <tbody>
+              <tr><td>Buy and hold S&amp;P 500</td><td>+265%</td><td>−45%</td><td>+82%</td><td>−51%</td><td>+110%</td><td>−51%</td><td>11%</td></tr>
+              <tr><td>60/40, rebalanced yearly</td><td>+163%</td><td>−19%</td><td>+56%</td><td>−27%</td><td>+65%</td><td>−27%</td><td>9%</td></tr>
+              <tr class="highlight"><td>Trend (10-month average)</td><td>+205%</td><td><strong>+13%</strong></td><td>+81%</td><td><strong>+7%</strong></td><td>+64%</td><td>−27%</td><td>11%</td></tr>
+              <tr><td>Valuation trim (CAPE top 10%)</td><td>+183%</td><td>−27%</td><td>+58%</td><td>−48%</td><td>+82%</td><td>−48%</td><td>10%</td></tr>
+              <tr><td>Bubble-signal exit</td><td>+246%</td><td>−34%</td><td>+82%</td><td>−51%</td><td>+110%</td><td>−51%</td><td>11%</td></tr>
+              <tr><td>Protective puts (10% below, quarterly)</td><td>+185%</td><td>−45%</td><td>+66%</td><td>−39%</td><td>+89%</td><td>−48%</td><td>7%</td></tr>
+              <tr><td>Equal weight (RSP, from 2003)</td><td>n/a</td><td>n/a</td><td>+89%</td><td>−54%</td><td>+65%</td><td>−56%</td><td>11%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <figure>
+          <img src="images/p3_6_playbook_tradeoff.png" alt="Scatter chart of each rule's average return in the two crashes against its return in the AI boom so far" loading="lazy">
+          <figcaption>The trade-off: the rules that protected best in past crashes have given up the most of today's boom.</figcaption>
+        </figure>
+        <ul>
+          <li><strong>Trend following</strong> was the only rule that made money in both crashes. Its costs are 47 switches in 33 years (a tax problem outside retirement accounts), whipsaws in sharp V-shaped drops like spring 2025 and 2026, and a large lag in the AI boom.</li>
+          <li><strong>Rebalanced 60/40</strong> is the no-forecast option. It takes about half of each crash and about half of each boom.</li>
+          <li><strong>Valuation trims</strong> barely help, because CAPE has been in its historical top 10% in 77% of months since 1993.</li>
+          <li><strong>The bubble signal</strong> fired in 1999 and softened the dot-com bust, but it never fired for housing (a debt bubble) or AI.</li>
+          <li><strong>Puts</strong> cost about 4 points a year, and quarterly puts 10% below the market let most of a slow, grinding crash through.</li>
+          <li><strong>Equal weight</strong> lagged badly in the AI boom because the giants did the work. It is still the most direct hedge against today's specific risk, which is concentration.</li>
+        </ul>
+        <figure>
+          <img src="images/p3_7_playbook_growth.png" alt="Growth of $1 since 1993 for trend following, buy and hold, rebalanced 60/40 and protective puts, log scale, with the two crashes shaded" loading="lazy">
+          <figcaption>Growth of $1 since 1993. The trend rule sidestepped both crashes; puts paid a steady cost.</figcaption>
+        </figure>
+
+        <h2 id="meaning">What it means for an investor</h2>
+        <ul>
+          <li><strong>Know what you own.</strong> An S&amp;P 500 fund is now roughly a 44% bet on tech and a 22% bet on chips.</li>
+          <li><strong>Choose your protection before you need it, and accept its price.</strong> The historical evidence favours rebalancing or a trend rule over valuation timing or buying insurance. Neither is free.</li>
+          <li><strong>Watch the red flags, not the headlines.</strong> A 3–4 flag reading in chips or hardware, meaning acceleration plus an IPO wave, has historically marked the dangerous phase. Today they show 2 of 4.</li>
+        </ul>
+
+        <h2 id="limits">Limitations</h2>
+        <ul>
+          <li><strong>Survivorship bias in the leader baskets.</strong> Yahoo only lists companies that still trade, so Pets.com, Sun, Countrywide and Lehman are missing and the leaders' crashes look milder than they were. The French industry data includes dead firms.</li>
+          <li><strong>Small samples.</strong> 66 run-ups in total, and only 5 test events with 3–4 flags.</li>
+          <li><strong>Debt is invisible here.</strong> Stock-market gauges barely saw the housing bubble, which was built on mortgage credit.</li>
+          <li><strong>Option prices are estimated.</strong> Puts are priced with Black-Scholes at the VIX plus 4 points; real costs varied.</li>
+          <li><strong>No taxes.</strong> Every switch in a taxable account can trigger capital gains, which hurts the trend rule most.</li>
+        </ul>
+        <p style="color:var(--muted);font-size:.92rem;margin-top:28px">Data: Yahoo Finance (stocks, indexes and ETFs), Robert Shiller's S&amp;P 500 data (Yale), and the Kenneth French Data Library (49 industry portfolios and market factors).</p>
+
+        <div class="next-project panel">
+          <div>
+            <h3>Want to see the code?</h3>
+            <p>The notebook walks through all ten steps, and every setting is at the top.</p>
+          </div>
+          <!-- EDIT: create this repo on GitHub so the link works -->
+          <a class="btn btn-primary" href="https://github.com/poorvikmp/ai-bubble">View on GitHub</a>
+        </div>
+
+        <a class="next-project panel pager" href="cross-asset-events.html">
+          <div>
+            <p class="eyebrow" style="margin-bottom:6px">← Previous project</p>
+            <h3>Project 2: Cross-Asset Correlation Regime Decomposition Study</h3>
+            <p>When does the stock-bond hedge fail, and can you trade it?</p>
+          </div>
+        </a>
+
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Poorvik</span>
+      <a href="index.html#contact">Get in touch</a>
+    </div>
+  </footer>
+
+  <script src="race-data.js"></script>
+  <script src="race-chart.js"></script>
+</body>
+</html>

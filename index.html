@@ -114,6 +114,31 @@
           </div>
         </a>
 
+        <!-- Project 3: same layout, with the three-booms race chart -->
+        <a class="featured panel" href="ai-bubble.html">
+          <div class="text">
+            <p class="eyebrow">Project 3</p>
+            <h3>Anatomy of a Bubble: AI vs <span class="nowrap">Dot-Com</span> vs Housing</h3>
+            <p class="desc">Is the AI boom a bubble? I measured it against the dot-com and housing bubbles with the same yardsticks, tested an early-warning signal on every US industry since 1926, and priced what protection costs a retail investor.</p>
+            <div class="stats">
+              <div class="stat"><div class="num">44%</div><div class="label">of the US market is tech (43% in 2000)</div></div>
+              <div class="stat"><div class="num">70%</div><div class="label">of the AI-era gain from earnings</div></div>
+              <div class="stat"><div class="num">69</div><div class="label">industry run-ups tested since 1926</div></div>
+            </div>
+            <ul class="tags"><li>Python</li><li>pandas</li><li>Market history</li><li>Risk</li></ul>
+            <p class="more">Read the case study →</p>
+          </div>
+          <div class="viz">
+            <div class="chart-legend">
+              <span><i class="sw s-dotcom"></i>Dot-com</span>
+              <span><i class="sw s-housing"></i>Housing</span>
+              <span><i class="sw s-ai"></i>AI</span>
+            </div>
+            <div class="chart" data-race-chart data-mini></div>
+            <p class="cap">Growth of $1 in each boom's leader stocks, by years since it began (log scale)</p>
+          </div>
+        </a>
+
         <!-- EDIT: MORE PROJECTS. To show this grid, delete this whole line and the END line below. Copy the card once per project.
         <div class="grid">
           <a class="card panel" href="https://github.com/poorvikmp/your-repo">
@@ -153,6 +178,7 @@
               <li>Sharpe, Sortino, drawdown, Calmar</li>
               <li>60/40 and risk-parity benchmarks</li>
               <li>Macro event risk: CPI, FOMC and jobs days</li>
+              <li>Valuation and bubble diagnostics: CAPE, concentration, run-ups</li>
             </ul>
           </div>
           <div class="panel">
@@ -175,7 +201,7 @@
           <p class="eyebrow">About</p>
           <h2 style="font-size:2rem;margin-bottom:20px">Curious about what's real in markets</h2>
           <!-- EDIT: add a sentence about your school, degree or current role -->
-          <p>I'm drawn to the question underneath every backtest: is this result real, or did I just find a pattern in noise? My first project started as a market-timing idea and turned into a lesson in out-of-sample testing and finding where returns really come from. My second asked when the stock-bond hedge breaks down, and found that the answer is a risk to manage rather than a trade.</p>
+          <p>I'm drawn to the question underneath every backtest: is this result real, or did I just find a pattern in noise? My first project started as a market-timing idea and turned into a lesson in out-of-sample testing and finding where returns really come from. My second asked when the stock-bond hedge breaks down, and found that the answer is a risk to manage rather than a trade. My third put the AI boom next to the dot-com and housing bubbles, and asked what protection really costs.</p>
           <p>I work mostly in Python, and I'm looking for opportunities in quantitative research, portfolio analytics and investment strategy.</p>
         </div>
         <div class="principles panel">
@@ -217,5 +243,7 @@
   <script src="chart.js"></script>
   <script src="corr-data.js"></script>
   <script src="corr-chart.js"></script>
+  <script src="race-data.js"></script>
+  <script src="race-chart.js"></script>
 </body>
 </html>
