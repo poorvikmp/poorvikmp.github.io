@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cross-Asset Correlation Regime Decomposition Study | Poorvik</title>
+  <meta name="description" content="When does the stock-bond hedge fail, and can you trade it? An event study of 20 years of CPI releases and Fed decisions.">
+
+  <!-- EDIT: replace YOUR-USERNAME once the site is on GitHub Pages -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Cross-Asset Correlation Regime Decomposition Study | Poorvik">
+  <meta property="og:description" content="When does the stock-bond hedge fail, and can you trade it? 20 years of CPI and Fed days, tested.">
+  <meta property="og:url" content="https://YOUR-USERNAME.github.io/cross-asset-events.html">
+  <meta property="og:image" content="https://YOUR-USERNAME.github.io/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="index.html"><span class="mark">P</span>Poorvik</a>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="index.html#work">Work</a></li>
+          <li class="hide-sm"><a href="index.html#skills">Skills</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+
+    <div class="case-head">
+      <a class="back" href="index.html#work">← All work</a>
+      <p class="eyebrow">Project 2 · Cross-asset event study</p>
+      <h1>Cross-Asset Correlation Regime Decomposition Study</h1>
+      <p class="lede">When does the stock-bond hedge fail, and can you trade it? I measured how stocks, bonds and commodities move on CPI and Fed days across 20 years, and tested whether an investor could position for it in advance.</p>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>Solo project</dd></div>
+        <div><dt>Tools</dt><dd>Python, pandas, statsmodels</dd></div>
+        <div><dt>Data</dt><dd>Daily, 2006–2026</dd></div>
+        <!-- EDIT: point this at your GitHub repo -->
+        <div><dt>Code</dt><dd><a href="https://github.com/YOUR-USERNAME/cross-asset-events">View on GitHub</a></dd></div>
+      </dl>
+    </div>
+
+    <!-- Interactive chart: hover (or tap) a bar to read its value -->
+    <div class="hero-chart panel">
+      <h2>Stock-bond correlation by type of day</h2>
+      <div class="chart-legend">
+        <span><i class="sw s-growth"></i>Growth regime (stocks and bonds usually move apart)</span>
+        <span><i class="sw s-infl"></i>Inflation regime (they usually move together)</span>
+      </div>
+      <div class="chart" data-corr-chart></div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">+0.55</div><div class="label">Stock-bond correlation on inflation-regime CPI days (normal days: +0.12)</div></div>
+      <div class="stat"><div class="num">−0.75%</div><div class="label">S&amp;P 500 move per +10bp hawkish surprise on those days</div></div>
+      <div class="stat"><div class="num">≈ 4×</div><div class="label">60/40's return on CPI and Fed days vs a normal day</div></div>
+      <div class="stat"><div class="num">0.95 → 0.93</div><div class="label">Test Sharpe after de-risking into event days</div></div>
+    </div>
+
+    <div class="tldr panel">
+      <h2>Summary</h2>
+      <ul>
+        <li><strong>The 60/40 hedge fails on inflation and Fed news days.</strong> When stocks and bonds are already positively correlated, their correlation jumps to about +0.55 on CPI and FOMC days, against +0.12 on normal days. Jobs-report days show no jump, so the effect is specific to inflation and policy news.</li>
+        <li><strong>The regime flips what a yield move means.</strong> A hawkish surprise costs the S&amp;P 500 about 0.75% on CPI and Fed days in the inflation regime, and close to nothing in the growth regime.</li>
+        <li><strong>Trading it doesn't beat 60/40.</strong> Cutting risk on those days halves the worst event-day losses but lowers the Sharpe ratio in training and in the out-of-sample test, because those days also carry the highest expected returns.</li>
+        <li><strong>The result is a risk finding, not a trading edge.</strong> It tells a portfolio manager when diversification is least reliable, on a schedule you can read off the calendar.</li>
+      </ul>
+    </div>
+
+    <div class="case-body">
+      <aside class="toc" aria-label="On this page">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#question">The question</a></li>
+          <li><a href="#method">Data and method</a></li>
+          <li><a href="#f1">Finding 1: the hedge fails</a></li>
+          <li><a href="#f2">Finding 2: surprises flip</a></li>
+          <li><a href="#f3">Finding 3: the Fed-day premium</a></li>
+          <li><a href="#trade">Can you trade it?</a></li>
+          <li><a href="#meaning">What it means</a></li>
+          <li><a href="#limits">Limitations</a></li>
+        </ol>
+      </aside>
+
+      <article class="article">
+
+        <h2 id="question">The question</h2>
+        <p>For most of 2000 to 2020, stocks and bonds moved in opposite directions. Bad news was about growth: stocks fell and investors bought bonds, so a 60/40 portfolio hedged itself. In 2022 that broke. Inflation was the main risk, hot CPI prints sent both stocks and bonds down, and 60/40 had its worst year in decades.</p>
+        <p>This study tests whether that breakdown is concentrated on the days new inflation and policy information arrives, and whether an investor could position for it in advance.</p>
+
+        <h2 id="method">Data and method</h2>
+        <p>Daily data from February 2006 to October 2026: 5,203 trading days, with 247 CPI releases, 164 scheduled FOMC decisions, and 247 jobs reports as a control group.</p>
+        <div class="table-scroll">
+          <table class="wrap-cells">
+            <thead><tr><th>Piece</th><th>Choice</th></tr></thead>
+            <tbody>
+              <tr><td>Assets</td><td>SPY (equities), IEF (7–10y Treasuries), DBC (commodities), GLD (gold), UUP (dollar), plus the 5y and 10y yields</td></tr>
+              <tr><td>Events</td><td>CPI releases and FOMC decisions, with dates from BLS via ALFRED and the Fed's meeting calendars</td></tr>
+              <tr><td>Control</td><td>Jobs reports: also big 8:30am releases, but about growth rather than inflation</td></tr>
+              <tr><td>Regime</td><td>Stock-bond correlation over the previous 63 trading days. Positive is the <strong>inflation regime</strong>, negative the <strong>growth regime</strong>. It uses only past data, so there's no look-ahead</td></tr>
+              <tr><td>Surprise</td><td>The event-day change in the 5-year yield, since free consensus forecasts don't exist</td></tr>
+              <tr><td>Significance</td><td>Luck tests against random normal days of the same count, plus robust t-stats</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <figure>
+          <img src="images/p2_1_regimes.png" alt="Rolling 63-day stock-bond correlation from 2006 to 2026, mostly negative until 2021 and mostly positive after" loading="lazy">
+          <figcaption>The inflation regime covers 23% of days: briefly in 2006–07 and 2013, then most of the time from 2021 onward.</figcaption>
+        </figure>
+
+        <h2 id="f1">Finding 1: the hedge fails on CPI and Fed days, not on jobs days</h2>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Stock-bond correlation</th><th>CPI days</th><th>FOMC days</th><th>Jobs days</th><th>Normal days</th></tr></thead>
+            <tbody>
+              <tr><td>Growth regime</td><td>−0.11</td><td>0.00</td><td>−0.47</td><td>−0.41</td></tr>
+              <tr class="highlight"><td>Inflation regime</td><td>+0.55</td><td>+0.53</td><td>+0.01</td><td>+0.12</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>A luck test with 2,000 random sets of normal days gives p ≈ 0.01 for CPI and 0.04 for FOMC in the inflation regime. Jobs days are indistinguishable from normal days (p ≈ 0.5). Equity volatility on inflation-regime CPI days is about 50% higher than on normal days, and CPI days, just 5% of trading days, produced 14% of the stock-bond co-movement in 2022.</p>
+
+        <h2 id="f2">Finding 2: the same surprise means opposite things</h2>
+        <p>S&amp;P 500 return per +10bp move in the 5-year yield on the event day:</p>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th></th><th>CPI days</th><th>FOMC days</th><th>Jobs days</th></tr></thead>
+            <tbody>
+              <tr><td>Growth regime</td><td>+0.22% (t 0.9)</td><td>−0.06% (t −0.3)</td><td>+0.71% (t 6.3)</td></tr>
+              <tr class="highlight"><td>Inflation regime</td><td>−0.76% (t −3.3)</td><td>−0.75% (t −4.7)</td><td>−0.07% (t −0.4)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>In the growth regime, rising yields on jobs days are good news for stocks, because yields rise when the economy is strong. In the inflation regime, rising yields on CPI and Fed days mean tighter policy, which hurts both stocks and bonds. That flip is what turns the two assets from hedges into twins. Gold falls and the dollar rises on hawkish surprises in every regime.</p>
+        <figure>
+          <img src="images/p2_3_equity_surprise_beta.png" alt="Bar chart of S&amp;P 500 return per 10bp yield surprise by day type and regime" loading="lazy">
+          <figcaption>Same hawkish surprise, opposite stock reaction depending on the regime.</figcaption>
+        </figure>
+
+        <h2 id="f3">Finding 3: the Fed-day stock premium only exists in the growth regime</h2>
+        <p>The S&amp;P 500 averaged +0.33% on growth-regime FOMC days (t 2.9, about seven times a normal day), matching published research on the FOMC announcement premium. In the inflation regime it was +0.04% (t 0.2). There's no reliable drift before or after CPI releases.</p>
+        <figure>
+          <img src="images/p2_4_event_paths.png" alt="Average cumulative S&amp;P 500 return from five days before to five days after CPI and FOMC days, by regime" loading="lazy">
+          <figcaption>Average S&amp;P 500 path around CPI and FOMC days, by regime.</figcaption>
+        </figure>
+
+        <h2 id="trade">Can you trade it?</h2>
+        <p>The rule: on inflation-regime CPI and FOMC days (94 days in total), switch a daily-rebalanced 60/40 to a lower-risk mix and switch back the next day. Costs are 2bp per unit traded. I compared every rule on 2006–2018, then checked them once on 2019–2026.</p>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Sharpe ratio</th><th>60/40</th><th>Halve into cash</th><th>Bonds → dollar</th><th>Cut equities</th></tr></thead>
+            <tbody>
+              <tr><td>Train 2006–2018</td><td>0.69</td><td>0.68</td><td>0.67</td><td>0.68</td></tr>
+              <tr class="highlight"><td>Test 2019–2026</td><td>0.95</td><td>0.91</td><td>0.90</td><td>0.93</td></tr>
+              <tr><td>Worst event day, test</td><td>−2.8%</td><td>−1.4%</td><td>−2.1%</td><td>−1.5%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Every rule does what it promises on the day: the worst event-day loss roughly halves. But every rule gives up more return than it saves in risk, and none beats de-risking on the same number of random days (luck-test p from 0.56 to 0.99).</p>
+        <figure>
+          <img src="images/p2_5_derisk_luck_test.png" alt="Change in Sharpe ratio from de-risking on CPI and FOMC days compared with random days, in training and test periods" loading="lazy">
+          <figcaption>De-risking on CPI and Fed days is no better than de-risking on random days.</figcaption>
+        </figure>
+        <div class="callout">
+          <p><strong>Why it doesn't pay.</strong> Event-day risk is paid for. On those 94 days, 60/40 averaged +0.13%, about four times the +0.03% of a normal day. Investors are paid to hold risk through scheduled news, and stepping aside forfeits that.</p>
+        </div>
+        <p>I also tested the reverse trade: holding 100% equities on growth-regime FOMC days to harvest Finding 3. It worked in training (Sharpe 0.69 → 0.74) but not in the test (0.95 → 0.93), consistent with research showing the pre-FOMC premium faded after about 2015.</p>
+
+        <h2 id="meaning">What it means for an investor</h2>
+        <ul>
+          <li><strong>Diversification depends on the regime and the calendar.</strong> In an inflation regime, a 60/40 investor is least hedged on a schedule you can read off the BLS and Fed calendars.</li>
+          <li><strong>Protection for those days has a cost.</strong> Cheap de-risking gives up the announcement premium, so the finding is most useful for risk budgeting (event-day VaR, option hedges, sizing levered positions) rather than as a return signal.</li>
+          <li><strong>Watch the 63-day stock-bond correlation.</strong> When it turns positive, CPI and FOMC days become joint-drawdown days for stocks and bonds.</li>
+        </ul>
+
+        <h2 id="limits">Limitations</h2>
+        <ul>
+          <li><strong>A small, recent inflation-regime sample:</strong> 59 CPI days and 37 FOMC days, mostly after 2021, so most of it falls in the test period.</li>
+          <li><strong>Daily closes.</strong> Intraday data would isolate the release minute and strip out unrelated news.</li>
+          <li><strong>Market-implied surprise.</strong> The yield move measures the market's reaction, not the gap against economists' forecasts.</li>
+        </ul>
+        <p style="color:var(--muted);font-size:.92rem;margin-top:28px">Data: Yahoo Finance (SPY, IEF, DBC, GLD, UUP, ^FVX, ^TNX), BLS release dates via ALFRED (St. Louis Fed), and Federal Reserve meeting calendars.</p>
+
+        <div class="next-project panel">
+          <div>
+            <h3>Want to see the code?</h3>
+            <p>The notebook walks through all six steps, and every setting is at the top.</p>
+          </div>
+          <!-- EDIT: point this at your GitHub repo -->
+          <a class="btn btn-primary" href="https://github.com/YOUR-USERNAME/cross-asset-events">View on GitHub</a>
+        </div>
+
+        <a class="next-project panel pager" href="regime-allocation.html">
+          <div>
+            <p class="eyebrow" style="margin-bottom:6px">← Previous project</p>
+            <h3>Project 1: Regime-Based Tactical Allocation</h3>
+            <p>Can macro signals improve a 60/40 portfolio? A 26-year backtest, stress-tested.</p>
+          </div>
+        </a>
+
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Poorvik</span>
+      <a href="index.html#contact">Get in touch</a>
+    </div>
+  </footer>
+
+  <script src="corr-chart.js"></script>
+</body>
+</html>

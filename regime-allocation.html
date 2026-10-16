@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Regime-Based Tactical Allocation | Poorvik</title>
+  <meta name="description" content="Can inflation, yield-curve and VIX signals improve a 60/40 portfolio? A 26-year backtest with honest out-of-sample testing.">
+
+  <!-- EDIT: replace YOUR-USERNAME once the site is on GitHub Pages -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Regime-Based Tactical Allocation | Poorvik">
+  <meta property="og:description" content="Can macro signals improve a 60/40 portfolio? A 26-year backtest, stress-tested.">
+  <meta property="og:url" content="https://YOUR-USERNAME.github.io/regime-allocation.html">
+  <meta property="og:image" content="https://YOUR-USERNAME.github.io/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="index.html"><span class="mark">P</span>Poorvik</a>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="index.html#work">Work</a></li>
+          <li class="hide-sm"><a href="index.html#skills">Skills</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+
+    <div class="case-head">
+      <a class="back" href="index.html#work">← All work</a>
+      <p class="eyebrow">Project 1 · Quantitative asset allocation</p>
+      <h1>Regime-Based Tactical Allocation</h1>
+      <p class="lede">Can three macro signals (inflation trend, yield-curve slope and the VIX) tell a portfolio when to hold more stocks, bonds or cash? I built the strategy, backtested it over 26 years, and tried hard to break my own result.</p>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>Solo project</dd></div>
+        <div><dt>Tools</dt><dd>Python, pandas, NumPy</dd></div>
+        <div><dt>Data</dt><dd>Monthly, 1995–2026</dd></div>
+        <!-- EDIT: point this at your GitHub repo -->
+        <div><dt>Code</dt><dd><a href="https://github.com/YOUR-USERNAME/regime-allocation">View on GitHub</a></dd></div>
+      </dl>
+    </div>
+
+    <!-- Interactive chart: hover (or tap) to read values -->
+    <div class="hero-chart panel">
+      <h2>Growth of $1, after trading costs</h2>
+      <div class="chart-legend">
+        <span><i class="sw s-v2"></i>Version 2 (tilts around 60/40)</span>
+        <span><i class="sw s-b"></i>60/40 benchmark</span>
+      </div>
+      <div class="chart" data-growth-chart></div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">0.72</div><div class="label">Sharpe ratio in the 2015–2026 test (60/40: 0.70)</div></div>
+      <div class="stat"><div class="num">+0.3%</div><div class="label">Extra return a year vs 60/40 in the test</div></div>
+      <div class="stat"><div class="num">93%</div><div class="label">Of 500 shuffled-signal versions beaten</div></div>
+      <div class="stat"><div class="num">≈ 0.8</div><div class="label">t-statistic: a small edge, not yet significant</div></div>
+    </div>
+
+    <div class="tldr panel">
+      <h2>Summary</h2>
+      <ul>
+        <li>I built a strategy that tilts a 60/40 portfolio by 5% per signal, using the inflation trend, yield-curve inversions and the VIX.</li>
+        <li>In the 2015–2026 test period, which I never used for tuning, it edged out 60/40 with the same drawdown, and it held up under every stress test.</li>
+        <li>Against a fixed portfolio with the same average stock weight, though, the timing added nothing in the test period. The edge came from owning about 5% more stocks. Finding that out is the real result.</li>
+      </ul>
+    </div>
+
+    <div class="case-body">
+      <aside class="toc" aria-label="On this page">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#question">The question</a></li>
+          <li><a href="#signals">The signals</a></li>
+          <li><a href="#method">How I tested it</a></li>
+          <li><a href="#v1">Version 1</a></li>
+          <li><a href="#lessons">What the data taught me</a></li>
+          <li><a href="#v2">Version 2</a></li>
+          <li><a href="#stress">Trying to break it</a></li>
+          <li><a href="#takeaways">Takeaways</a></li>
+          <li><a href="#next">What I'd test next</a></li>
+        </ol>
+      </aside>
+
+      <article class="article">
+
+        <h2 id="question">The question</h2>
+        <p>A 60/40 stock-bond portfolio is the standard benchmark, and it's hard to beat. Risk parity, which weights assets by their volatility, is the main alternative. The idea I wanted to test was that different economic "regimes" favour different assets, so a portfolio that reads the regime should do better than one that never changes.</p>
+
+        <h2 id="signals">The signals</h2>
+        <ul>
+          <li><strong>Inflation trend:</strong> is year-on-year CPI inflation above its own 12-month average?</li>
+          <li><strong>Yield curve:</strong> is the 10-year Treasury yield below the 3-month yield (an inversion)?</li>
+          <li><strong>Volatility:</strong> is the VIX above 20?</li>
+        </ul>
+        <figure>
+          <img src="images/1_signals.png" alt="The three signals from 2000 to 2026, with shaded months where each signal was on" loading="lazy">
+          <figcaption>The three signals over time. Shaded months are when each signal was "on".</figcaption>
+        </figure>
+
+        <h2 id="method">How I tested it</h2>
+        <p>I used monthly data from 1995 to September 2026: SPY for equities, IEF for bonds, DBC (with earlier proxies) for commodities, and T-bills for cash. Every trade pays 10 basis points in costs.</p>
+        <div class="callout">
+          <p><strong>The key discipline:</strong> I chose every setting using <strong>2000–2014 only</strong>, and looked at <strong>2015–2026 once</strong>, at the end. A strategy tuned on the same data it's judged on will always look good.</p>
+        </div>
+
+        <h2 id="v1">Version 1: full regime portfolios</h2>
+        <p>The first version switched between whole portfolios depending on the regime. It cut risk sharply, but it gave up too much return.</p>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>2015–2026 test</th><th>Sharpe</th><th>CAGR</th><th>Max drawdown</th></tr></thead>
+            <tbody>
+              <tr><td>Regime v1</td><td>0.63</td><td>6.7%</td><td>−12.4%</td></tr>
+              <tr><td>60/40</td><td>0.70</td><td>8.6%</td><td>−20.5%</td></tr>
+              <tr><td>Risk parity</td><td>0.50</td><td>5.2%</td><td>−12.5%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <figure>
+          <img src="images/3_growth_drawdown.png" alt="Growth of $1 and drawdowns for version 1, 60/40 and risk parity" loading="lazy">
+          <figcaption>Version 1 won in 2008 and 2022, when stocks fell, but missed the 2020 rebound.</figcaption>
+        </figure>
+
+        <h2 id="lessons">What the data taught me</h2>
+        <p>Instead of tweaking rules at random, I measured what each signal actually predicted for the following month:</p>
+        <ul>
+          <li><strong>Rising inflation</strong> was followed by weak equities, as expected, but also by weak commodities. By the time CPI shows a trend, the commodity move has usually happened already.</li>
+          <li><strong>An inverted curve</strong> warns of recession 12 to 24 months ahead, while stocks often keep rising for a year. Selling straight away costs return.</li>
+          <li><strong>A high VIX</strong> was followed by <em>higher</em> stock returns on average. Fear spikes tend to reverse, so de-risking after a spike sells near the bottom.</li>
+        </ul>
+
+        <h2 id="v2">Version 2: small tilts around 60/40</h2>
+        <p>So I kept 60/40 as home base and let each signal move just 5%. Inflation and the curve shift weight between stocks and cash, and the VIX shifts it between stocks and bonds, so equities range from 45% to 75%. All eight variants I tried on the training period scored within 0.04 Sharpe of each other, so I kept the one with the clearest economic logic rather than the best score.</p>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th></th><th>Train Sharpe</th><th>Test Sharpe</th><th>Test CAGR</th><th>Test max DD</th><th>Turnover / yr</th></tr></thead>
+            <tbody>
+              <tr class="highlight"><td>Tilt (v2)</td><td>0.51</td><td>0.72</td><td>9.0%</td><td>−20.4%</td><td>40%</td></tr>
+              <tr><td>Regime (v1)</td><td>0.30</td><td>0.63</td><td>6.7%</td><td>−12.4%</td><td>120%</td></tr>
+              <tr><td>60/40</td><td>0.46</td><td>0.70</td><td>8.6%</td><td>−20.5%</td><td>11%</td></tr>
+              <tr><td>Risk parity</td><td>0.77</td><td>0.50</td><td>5.2%</td><td>−12.5%</td><td>16%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <figure>
+          <img src="images/5_tilt_vs_6040.png" alt="Cumulative return of version 2 above 60/40, 2000 to 2026" loading="lazy">
+          <figcaption>Version 2's cumulative return above 60/40. The dotted line marks the start of the test period.</figcaption>
+        </figure>
+
+        <h2 id="stress">Trying to break it</h2>
+        <p>A small edge can easily be luck, so I stress-tested version 2:</p>
+        <ul>
+          <li><strong>Start dates</strong> from 2000 to 2015: it beat 60/40 every time, by 0.3% to 0.8% a year.</li>
+          <li><strong>Trading costs</strong> from 0 to 50 bp: still ahead.</li>
+          <li><strong>Different thresholds</strong> for the VIX and the curve: still ahead in all six combinations.</li>
+          <li><strong>Luck test:</strong> I shuffled the signals in time 500 times. The real signals beat 93% of the shuffled ones (p ≈ 0.07).</li>
+        </ul>
+        <figure>
+          <img src="images/6_luck_test.png" alt="Histogram of extra return from 500 shuffled signal sets, with the real strategy marked near the top" loading="lazy">
+          <figcaption>Extra return vs 60/40 for 500 versions with shuffled signals. The line marks the real signals.</figcaption>
+        </figure>
+        <div class="callout">
+          <p><strong>The honest finding.</strong> Version 2 holds about 5% more equities than 60/40 on average. Against a fixed portfolio holding that same average mix, the timing added +0.7% a year in 2000–2014 but −0.3% a year in 2015–2026. In the test period, the edge over 60/40 came from owning more stocks, not from reading the regime.</p>
+        </div>
+
+        <h2 id="takeaways">Takeaways</h2>
+        <ul>
+          <li>Keep training and test periods separate, and look at the test once. It's the only way to trust a number.</li>
+          <li>Check what each signal actually predicts before building rules on it. Two of my three intuitions were partly wrong.</li>
+          <li>Compare against the "no-signal" version with the same average exposure. That test showed where the edge really came from.</li>
+          <li>Low-cost and robust is not the same as proven. A t-stat of 0.8 means the edge needs more data.</li>
+        </ul>
+
+        <h2 id="next">What I'd test next</h2>
+        <ul>
+          <li>Replace on/off flags with a <strong>score</strong>, such as how far the VIX is above 20, and tilt gradually.</li>
+          <li>Require a signal to <strong>persist</strong> for two months before acting, to cut whipsaw trades.</li>
+          <li>Add a <strong>growth</strong> signal, such as the unemployment trend, as a fourth input.</li>
+          <li>Use <strong>TIPS or gold</strong> instead of broad commodities as the inflation hedge.</li>
+        </ul>
+        <p style="color:var(--muted);font-size:.92rem;margin-top:28px">Data: Yahoo Finance (SPY, IEF, DBC, ^TNX, ^IRX, ^VIX) and BLS CPI-U. The curve is the 10-year minus the 3-month yield. Results ignore taxes, and trades happen at month-end closes.</p>
+
+        <div class="next-project panel">
+          <div>
+            <h3>Want to see the code?</h3>
+            <p>The notebook walks through every step, and every setting is at the top.</p>
+          </div>
+          <!-- EDIT: point this at your GitHub repo -->
+          <a class="btn btn-primary" href="https://github.com/YOUR-USERNAME/regime-allocation">View on GitHub</a>
+        </div>
+
+        <a class="next-project panel pager" href="cross-asset-events.html">
+          <div>
+            <p class="eyebrow" style="margin-bottom:6px">Next project →</p>
+            <h3>Project 2: Cross-Asset Correlation Regime Decomposition Study</h3>
+            <p>When does the stock-bond hedge fail, and can you trade it?</p>
+          </div>
+        </a>
+
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Poorvik</span>
+      <a href="index.html#contact">Get in touch</a>
+    </div>
+  </footer>
+
+  <script src="growth-data.js"></script>
+  <script src="chart.js"></script>
+</body>
+</html>
