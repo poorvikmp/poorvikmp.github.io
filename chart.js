@@ -25,7 +25,7 @@
     if (!W) return;
     const narrow = W < 560;
     const H = mini ? Math.round(W * 0.56) : Math.max(260, Math.min(380, Math.round(W * 0.48)));
-    const m = mini ? { t: 28, r: 92, b: 14, l: 14 } : { t: 34, r: narrow ? 100 : 112, b: 30, l: narrow ? 34 : 46 };
+    const m = mini ? { t: 28, r: 116, b: 14, l: 6 } : { t: 34, r: narrow ? 100 : 112, b: 30, l: narrow ? 34 : 46 };
     const n = data.dates.length;
     const lo = 0.5, hi = 7.2;
     const x = (i) => m.l + (i / (n - 1)) * (W - m.l - m.r);

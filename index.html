@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Poorvik | Quantitative Finance Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Poorvik | My Pipeline: Quantitative Finance Portfolio</title>
   <meta name="description" content="Poorvik designs and backtests systematic investment strategies in Python, with an emphasis on honest out-of-sample testing.">
 
   <!-- Link preview for LinkedIn, Slack, iMessage etc. -->
@@ -17,228 +17,235 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="site.js"></script>
 </head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
+<body class="home">
+  <a class="skip" href="#contents">Skip to the contents</a>
 
-  <!-- Navigation: the same block is on every page -->
-  <header class="nav">
-    <div class="wrap">
-      <a class="brand" href="index.html"><span class="mark">P</span>Poorvik</a>
-      <nav aria-label="Main">
-        <ul>
-          <li><a href="#work">Work</a></li>
-          <li class="hide-sm"><a href="#skills">Skills</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
+  <!-- Top bar: the same links as the book's contents page -->
+  <header class="bookbar">
+    <a class="brand" href="#cover"><span class="mark">P</span>Poorvik</a>
+    <nav aria-label="Book">
+      <ul>
+        <li><a href="#contents">Contents</a></li>
+        <!-- EDIT: save your résumé in this folder as resume.pdf -->
+        <li class="hide-sm"><a href="resume.pdf">Résumé</a></li>
+        <li><a href="#correspondence">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main id="main">
+  <!--
+    THE BOOK. Each <section class="page"> is one page, in reading order.
+    book.js binds them into a book you can flip through.
+    - data-title: what the label under the book says on that page
+    - data-head:  the small running head at the top of the page
+    - data-plain: no running head or page number (covers)
+    Page numbers, and the numbers in the contents, are filled in automatically.
+  -->
+  <main class="book" id="book" data-book aria-label="Portfolio, as a book">
 
-    <!-- Hero: the first five seconds a recruiter spends on the site -->
-    <div class="wrap hero">
-      <p class="eyebrow rise">Quantitative finance · Python · Research</p>
-      <h1 class="rise d1">I build investment strategies, then try to break them.</h1>
-      <p class="lede rise d2">I'm Poorvik. I design and backtest systematic portfolio strategies, and I care more about whether a result holds up out of sample than whether it looks good.</p>
-      <div class="actions rise d3">
-        <a class="btn btn-primary" href="#work">See my work
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-        <!-- EDIT: save your résumé in this folder as resume.pdf -->
-        <a class="btn btn-ghost" href="resume.pdf">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          Résumé</a>
-        <div class="icon-links">
-          <!-- EDIT: your GitHub, LinkedIn and email -->
-          <a href="https://github.com/poorvikmp" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
-          <a href="https://www.linkedin.com/in/YOUR-PROFILE" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-          <a href="mailto:YOUR-EMAIL" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Work -->
-    <section id="work">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="eyebrow">Selected work</p>
-          <h2>Projects</h2>
-          <p>Each project has a full write-up: the question, how I tested it, and what held up out of sample.</p>
-        </div>
-
-        <!-- Project 1: big card with the live chart -->
-        <a class="featured panel" href="regime-allocation.html">
-          <div class="text">
-            <p class="eyebrow">Project 1</p>
-            <h3>Regime-Based Tactical Allocation</h3>
-            <p class="desc">Can inflation, yield-curve and VIX signals improve a 60/40 portfolio? I backtested 26 years of data, tuned only on 2000–2014, and stress-tested the result until I knew where the edge really came from.</p>
-            <div class="stats">
-              <div class="stat"><div class="num">0.72</div><div class="label">Test Sharpe vs 0.70</div></div>
-              <div class="stat"><div class="num">93%</div><div class="label">of random signals beaten</div></div>
-              <div class="stat"><div class="num">26 yrs</div><div class="label">backtested, after costs</div></div>
-            </div>
-            <ul class="tags"><li>Python</li><li>pandas</li><li>Backtesting</li><li>Macro</li></ul>
-            <p class="more">Read the case study →</p>
-          </div>
-          <div class="viz">
-            <div class="chart" data-growth-chart data-mini></div>
-            <p class="cap">Growth of $1 after costs, 2000–2026</p>
-          </div>
-        </a>
-
-        <!-- Project 2: same layout, with the rolling correlation chart -->
-        <a class="featured panel" href="cross-asset-events.html">
-          <div class="text">
-            <p class="eyebrow">Project 2</p>
-            <h3>Cross-Asset Correlation Regime Decomposition Study</h3>
-            <p class="desc">When does the stock-bond hedge fail? I measured how stocks, bonds and commodities move on 20 years of CPI releases and Fed decisions, used jobs-report days as a control, and tested whether you can trade it.</p>
-            <div class="stats">
-              <div class="stat"><div class="num">+0.55</div><div class="label">stock-bond corr. on CPI days</div></div>
-              <div class="stat"><div class="num">≈ 4×</div><div class="label">60/40's return on event days</div></div>
-              <div class="stat"><div class="num">658</div><div class="label">CPI, Fed and jobs days studied</div></div>
-            </div>
-            <ul class="tags"><li>Python</li><li>statsmodels</li><li>Event study</li><li>Macro</li></ul>
-            <p class="more">Read the case study →</p>
-          </div>
-          <div class="viz">
-            <div class="chart-legend">
-              <span><i class="sw s-infl"></i>Move together (inflation regime)</span>
-              <span><i class="sw s-growth"></i>Bonds hedge stocks</span>
-            </div>
-            <div class="chart" data-corr-chart data-mini></div>
-            <p class="cap">Rolling 3-month stock-bond correlation (SPY vs IEF), 2006–2026</p>
-          </div>
-        </a>
-
-        <!-- Project 3: same layout, with the three-booms race chart -->
-        <a class="featured panel" href="ai-bubble.html">
-          <div class="text">
-            <p class="eyebrow">Project 3</p>
-            <h3>Anatomy of a Bubble: AI vs <span class="nowrap">Dot-Com</span> vs Housing</h3>
-            <p class="desc">Is the AI boom a bubble? I measured it against the dot-com and housing bubbles with the same yardsticks, tested an early-warning signal on every US industry since 1926, and priced what protection costs a retail investor.</p>
-            <div class="stats">
-              <div class="stat"><div class="num">44%</div><div class="label">of the US market is tech (43% in 2000)</div></div>
-              <div class="stat"><div class="num">70%</div><div class="label">of the AI-era gain from earnings</div></div>
-              <div class="stat"><div class="num">69</div><div class="label">industry run-ups tested since 1926</div></div>
-            </div>
-            <ul class="tags"><li>Python</li><li>pandas</li><li>Market history</li><li>Risk</li></ul>
-            <p class="more">Read the case study →</p>
-          </div>
-          <div class="viz">
-            <div class="chart-legend">
-              <span><i class="sw s-dotcom"></i>Dot-com</span>
-              <span><i class="sw s-housing"></i>Housing</span>
-              <span><i class="sw s-ai"></i>AI</span>
-            </div>
-            <div class="chart" data-race-chart data-mini></div>
-            <p class="cap">Growth of $1 in each boom's leader stocks, by years since it began (log scale)</p>
-          </div>
-        </a>
-
-        <!-- EDIT: MORE PROJECTS. To show this grid, delete this whole line and the END line below. Copy the card once per project.
-        <div class="grid">
-          <a class="card panel" href="https://github.com/poorvikmp/your-repo">
-            <p class="eyebrow">Category</p>
-            <h3>Project name</h3>
-            <p>One or two sentences: the question, what you built, and what you found.</p>
-            <ul class="tags"><li>Python</li><li>Tool</li></ul>
-          </a>
-        </div>
-        END -->
-      </div>
+    <!-- Cover -->
+    <section class="page cloth cover" id="cover" data-title="Cover" data-plain>
+      <p class="cover-kicker foil">My Pipeline</p>
+      <div class="cover-rule"></div>
+      <h1 class="foil">I build investment strategies, then try to break them.</h1>
+      <div class="cover-rule"></div>
+      <p class="cover-sub">Three studies in markets</p>
+      <p class="cover-author foil">Poorvik</p>
     </section>
 
-    <!-- Skills -->
-    <section id="skills">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="eyebrow">Toolkit</p>
-          <h2>What I work with</h2>
-        </div>
-        <div class="skills">
-          <div class="panel">
-            <h3>Research methods</h3>
-            <ul>
-              <li>Train / test splits and out-of-sample checks</li>
-              <li>Permutation ("luck") tests</li>
-              <li>Robustness and sensitivity analysis</li>
-              <li>Return attribution vs simple benchmarks</li>
-              <li>Event studies and regressions with robust t-stats</li>
-            </ul>
-          </div>
-          <div class="panel">
-            <h3>Markets</h3>
-            <ul>
-              <li>Tactical and strategic asset allocation</li>
-              <li>Macro signals: inflation, yield curve, VIX</li>
-              <li>Sharpe, Sortino, drawdown, Calmar</li>
-              <li>60/40 and risk-parity benchmarks</li>
-              <li>Macro event risk: CPI, FOMC and jobs days</li>
-              <li>Valuation and bubble diagnostics: CAPE, concentration, run-ups</li>
-            </ul>
-          </div>
-          <div class="panel">
-            <h3>Tools</h3>
-            <ul>
-              <li>Python</li>
-              <li>pandas, NumPy and statsmodels</li>
-              <li>Matplotlib and Jupyter</li>
-              <li>Git and GitHub</li>
-            </ul>
-          </div>
-        </div>
+    <!-- 1 · Preface -->
+    <section class="page" id="preface" data-alias="about" data-title="Preface" data-head="Preface">
+      <h2 class="page-title">Preface</h2>
+      <p class="dropcap">I'm Poorvik. I design and backtest systematic portfolio strategies, and I care more about whether a result holds up out of sample than whether it looks good.</p>
+      <!-- EDIT: add a sentence about your school, degree or current role -->
+      <p>Each chapter in this book is one study: the question, how I tested it, and what held up when I checked it on data I never tuned on. The failures are in there too, because they explain the results.</p>
+      <p>I work mostly in Python, and I'm looking for roles in quantitative research, portfolio analytics and investment strategy.</p>
+      <div class="links-line">
+        <!-- EDIT: your résumé, LinkedIn and email -->
+        <a href="resume.pdf">Résumé</a>
+        <a href="https://github.com/poorvikmp">GitHub</a>
+        <a href="https://www.linkedin.com/in/YOUR-PROFILE">LinkedIn</a>
+        <a href="mailto:YOUR-EMAIL">Email</a>
       </div>
+      <p class="signature">Poorvik</p>
     </section>
 
-    <!-- About -->
-    <section id="about">
-      <div class="wrap about">
-        <div class="copy">
-          <p class="eyebrow">About</p>
-          <h2 style="font-size:2rem;margin-bottom:20px">Curious about what's real in markets</h2>
-          <!-- EDIT: add a sentence about your school, degree or current role -->
-          <p>I'm drawn to the question underneath every backtest: is this result real, or did I just find a pattern in noise? My first project started as a market-timing idea and turned into a lesson in out-of-sample testing and finding where returns really come from. My second asked when the stock-bond hedge breaks down, and found that the answer is a risk to manage rather than a trade. My third put the AI boom next to the dot-com and housing bubbles, and asked what protection really costs.</p>
-          <p>I work mostly in Python, and I'm looking for opportunities in quantitative research, portfolio analytics and investment strategy.</p>
-        </div>
-        <div class="principles panel">
-          <h3>How I work</h3>
-          <ol>
-            <li><strong>Tune on one period, judge on another.</strong> The test data stays untouched until the end.</li>
-            <li><strong>Beat the simple alternative.</strong> A strategy has to beat what you could do with no signals at all.</li>
-            <li><strong>Report what didn't work.</strong> The failures explain the result as much as the wins.</li>
-          </ol>
-        </div>
-      </div>
+    <!-- 2 · Contents -->
+    <section class="page" id="contents" data-alias="work" data-title="Contents" data-head="Contents">
+      <h2 class="page-title">Contents</h2>
+      <ol class="toc-list">
+        <li><a href="#preface"><span class="t">Preface</span><span class="dots"></span><span class="pg"></span></a></li>
+        <li class="group">The studies</li>
+        <li><a href="#chapter-1"><span class="n">1</span><span class="t">Regime-Based Tactical Allocation<em>Can macro signals improve a 60/40 portfolio?</em></span><span class="dots"></span><span class="pg"></span></a></li>
+        <li><a href="#chapter-2"><span class="n">2</span><span class="t">Cross-Asset Correlation Regime Decomposition Study<em>When does the stock-bond hedge fail?</em></span><span class="dots"></span><span class="pg"></span></a></li>
+        <li><a href="#chapter-3"><span class="n">3</span><span class="t">Anatomy of a Bubble: AI vs <span class="nowrap">Dot-Com</span> vs Housing<em>Is the AI boom a bubble, and what can you do about it?</em></span><span class="dots"></span><span class="pg"></span></a></li>
+        <li class="group">About the author</li>
+        <li><a href="#how-i-work"><span class="t">How I work</span><span class="dots"></span><span class="pg"></span></a></li>
+        <li><a href="#toolkit"><span class="t">Toolkit</span><span class="dots"></span><span class="pg"></span></a></li>
+        <li><a href="#correspondence"><span class="t">Let's talk</span><span class="dots"></span><span class="pg"></span></a></li>
+      </ol>
     </section>
 
-    <!-- Contact -->
-    <section id="contact">
-      <div class="wrap">
-        <div class="contact panel">
-          <h2>Let's talk</h2>
-          <p>I'm open to roles in quantitative research and investing. Email is the quickest way to reach me.</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="mailto:YOUR-EMAIL">Email me</a>
-            <a class="btn btn-ghost" href="https://www.linkedin.com/in/YOUR-PROFILE">LinkedIn</a>
-            <a class="btn btn-ghost" href="https://github.com/poorvikmp">GitHub</a>
-          </div>
-        </div>
+    <!-- Chapter 1: opening page -->
+    <section class="page opener" id="chapter-1" data-title="Chapter 1">
+      <p class="ch-mark"><span>Chapter</span><b>1</b></p>
+      <h2 class="ch-title"><a href="regime-allocation.html">Regime-Based Tactical Allocation</a></h2>
+      <p class="ch-dek">Can inflation, yield-curve and VIX signals improve a 60/40 portfolio? I backtested 26 years of data, tuned only on 2000–2014, and stress-tested the result until I knew where the edge really came from.</p>
+      <div class="ch-stats">
+        <div><b>0.72</b><span>Test Sharpe vs 0.70</span></div>
+        <div><b>93%</b><span>of random signals beaten</span></div>
+        <div><b>26 yrs</b><span>backtested, after costs</span></div>
       </div>
+      <ul class="tags"><li>Python</li><li>pandas</li><li>Backtesting</li><li>Macro</li></ul>
     </section>
 
+    <!-- Chapter 1: facing page with the chart -->
+    <section class="page plate" id="chapter-1-plate" data-title="Chapter 1" data-head="Regime-Based Tactical Allocation">
+      <figure>
+        <div class="chart" data-growth-chart data-mini></div>
+        <figcaption>Growth of $1 after costs, 2000–2026.</figcaption>
+      </figure>
+      <p class="finding"><b>The finding.</b> Version 2 edged out 60/40 in a test period I never tuned on, with the same drawdown. But most of that edge came from owning about 5% more stocks, not from reading the regime.</p>
+      <a class="read" href="regime-allocation.html">Read chapter 1</a>
+    </section>
+
+    <!-- Chapter 2: opening page -->
+    <section class="page opener" id="chapter-2" data-title="Chapter 2">
+      <p class="ch-mark"><span>Chapter</span><b>2</b></p>
+      <h2 class="ch-title"><a href="cross-asset-events.html">Cross-Asset Correlation Regime Decomposition Study</a></h2>
+      <p class="ch-dek">When does the stock-bond hedge fail? I measured how stocks, bonds and commodities move on 20 years of CPI releases and Fed decisions, used jobs-report days as a control, and tested whether you can trade it.</p>
+      <div class="ch-stats">
+        <div><b>+0.55</b><span>stock-bond corr. on CPI days</span></div>
+        <div><b>≈ 4×</b><span>60/40's return on event days</span></div>
+        <div><b>658</b><span>CPI, Fed and jobs days</span></div>
+      </div>
+      <ul class="tags"><li>Python</li><li>statsmodels</li><li>Event study</li><li>Macro</li></ul>
+    </section>
+
+    <!-- Chapter 2: facing page with the chart -->
+    <section class="page plate" id="chapter-2-plate" data-title="Chapter 2" data-head="Cross-Asset Correlation Study">
+      <figure>
+        <div class="chart-legend">
+          <span><i class="sw s-infl"></i>Move together (inflation regime)</span>
+          <span><i class="sw s-growth"></i>Bonds hedge stocks</span>
+        </div>
+        <div class="chart" data-corr-chart data-mini></div>
+        <figcaption>Rolling 3-month stock-bond correlation (SPY vs IEF), 2006–2026.</figcaption>
+      </figure>
+      <p class="finding"><b>The finding.</b> On CPI and Fed days in an inflation regime, stocks and bonds fall together. Stepping aside for those days doesn't pay, because they also carry the highest returns.</p>
+      <a class="read" href="cross-asset-events.html">Read chapter 2</a>
+    </section>
+
+    <!-- Chapter 3: opening page -->
+    <section class="page opener" id="chapter-3" data-title="Chapter 3">
+      <p class="ch-mark"><span>Chapter</span><b>3</b></p>
+      <h2 class="ch-title"><a href="ai-bubble.html">Anatomy of a Bubble: AI vs <span class="nowrap">Dot-Com</span> vs Housing</a></h2>
+      <p class="ch-dek">Is the AI boom a bubble? I measured it against the dot-com and housing bubbles with the same yardsticks, tested an early-warning signal on every US industry since 1926, and priced what protection costs a retail investor.</p>
+      <div class="ch-stats">
+        <div><b>44%</b><span>of the US market is tech (43% in 2000)</span></div>
+        <div><b>70%</b><span>of the AI-era gain from earnings</span></div>
+        <div><b>69</b><span>industry run-ups since 1926</span></div>
+      </div>
+      <ul class="tags"><li>Python</li><li>pandas</li><li>Market history</li><li>Risk</li></ul>
+    </section>
+
+    <!-- Chapter 3: facing page with the chart -->
+    <section class="page plate" id="chapter-3-plate" data-title="Chapter 3" data-head="Anatomy of a Bubble">
+      <figure>
+        <div class="chart-legend">
+          <span><i class="sw s-dotcom"></i>Dot-com</span>
+          <span><i class="sw s-housing"></i>Housing</span>
+          <span><i class="sw s-ai"></i>AI</span>
+        </div>
+        <div class="chart" data-race-chart data-mini></div>
+        <figcaption>Growth of $1 in each boom's leader stocks, by years since it began (log scale).</figcaption>
+      </figure>
+      <p class="finding"><b>The finding.</b> AI is an expensive, very concentrated boom with real earnings under it. Run-ups with 3–4 red flags crashed 80% of the time after 1990; chips show 2 of 4 today.</p>
+      <a class="read" href="ai-bubble.html">Read chapter 3</a>
+    </section>
+
+    <!-- How I work -->
+    <section class="page" id="how-i-work" data-title="How I work" data-head="About the author">
+      <h2 class="page-title">How I work</h2>
+      <p>I'm drawn to the question underneath every backtest: is this result real, or did I just find a pattern in noise? Three rules keep me honest.</p>
+      <ol class="principles-list">
+        <li><div><strong>Tune on one period, judge on another.</strong><span>The test data stays untouched until the end.</span></div></li>
+        <li><div><strong>Beat the simple alternative.</strong><span>A strategy has to beat what you could do with no signals at all.</span></div></li>
+        <li><div><strong>Report what didn't work.</strong><span>The failures explain the result as much as the wins.</span></div></li>
+      </ol>
+    </section>
+
+    <!-- Toolkit -->
+    <section class="page toolkit" id="toolkit" data-alias="skills" data-title="Toolkit" data-head="About the author">
+      <h2 class="page-title">Toolkit</h2>
+      <h3>Research methods</h3>
+      <ul>
+        <li>Train / test splits and out-of-sample checks</li>
+        <li>Permutation ("luck") tests</li>
+        <li>Robustness and sensitivity analysis</li>
+        <li>Event studies and regressions with robust t-stats</li>
+      </ul>
+      <h3>Markets</h3>
+      <ul>
+        <li>Tactical and strategic asset allocation</li>
+        <li>Macro signals and event risk: CPI, FOMC, VIX</li>
+        <li>Valuation and bubble diagnostics: CAPE, concentration</li>
+        <li>Sharpe, drawdown, 60/40 and risk-parity benchmarks</li>
+      </ul>
+      <h3>Tools</h3>
+      <ul>
+        <li>Python: pandas, NumPy, statsmodels</li>
+        <li>Matplotlib, Jupyter, Git and GitHub</li>
+      </ul>
+    </section>
+
+    <!-- Let's talk -->
+    <section class="page letter" id="correspondence" data-alias="contact" data-title="Let's talk" data-head="Correspondence">
+      <h2 class="page-title">Let's talk</h2>
+      <p>I'm open to roles in quantitative research, portfolio analytics and investing. Email is the quickest way to reach me, and I'm always happy to walk through any of these studies in more detail.</p>
+      <div class="btns">
+        <!-- EDIT: your email and LinkedIn -->
+        <a class="btn btn-primary" href="mailto:YOUR-EMAIL">Email me</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/YOUR-PROFILE">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://github.com/poorvikmp">GitHub</a>
+        <a class="btn btn-ghost" href="resume.pdf">Résumé</a>
+      </div>
+      <p class="signature">Thanks for reading.</p>
+    </section>
+
+    <!-- Colophon -->
+    <section class="page colophon" id="colophon" data-title="Colophon" data-head="Colophon">
+      <h2 class="page-title">Colophon</h2>
+      <p>This portfolio is set in EB Garamond and Source Serif 4. Every chart is drawn in your browser from the real data behind each study, so in the chapters you can hover over them to read exact values.</p>
+      <p>Built by hand in HTML, CSS and a little JavaScript, and published on GitHub Pages.</p>
+      <div class="fleuron" aria-hidden="true"><span></span></div>
+      <p>© 2026 Poorvik · <a href="#cover">Back to the cover</a></p>
+    </section>
+
+    <!-- Back cover -->
+    <section class="page cloth back-cover" id="back-cover" data-title="The end" data-plain>
+      <div class="monogram foil">P</div>
+      <blockquote class="foil">Tune on one period, judge on another.</blockquote>
+      <p class="url">poorvikmp.github.io</p>
+    </section>
   </main>
 
-  <footer>
-    <div class="wrap">
-      <span>© 2026 Poorvik</span>
-      <span>Built with HTML and CSS · Hosted on GitHub Pages</span>
-    </div>
-  </footer>
+  <!-- Buttons under the book -->
+  <nav class="book-controls" aria-label="Turn the pages">
+    <button class="turn prev" type="button" aria-label="Previous page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <p class="where" aria-live="polite"></p>
+    <button class="turn next" type="button" aria-label="Next page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </nav>
 
+  <script src="book.js"></script>
   <script src="growth-data.js"></script>
   <script src="chart.js"></script>
   <script src="corr-data.js"></script>

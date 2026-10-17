@@ -6,10 +6,12 @@ Plain HTML, CSS and a little JavaScript. There's no framework and no build step,
 
 | File | What it is |
 |---|---|
-| `index.html` | Home page: hero, the three project cards, skills, about, contact |
-| `regime-allocation.html` | Project 1 case study: the regime backtest |
-| `cross-asset-events.html` | Project 2 case study: the CPI and Fed event study |
-| `ai-bubble.html` | Project 3 case study: AI vs the dot-com and housing bubbles |
+| `index.html` | Home page, laid out as a book: cover, preface, contents, a two-page spread per chapter, how I work, toolkit, contact, back cover |
+| `book.js` | Binds the home page's pages into a book and turns them with a 3D page flip (click, arrow keys or swipe) |
+| `site.js` | The page-turn transition between pages, plus the fade-ins, margin contents and reading-progress line on chapter pages |
+| `regime-allocation.html` | Chapter 1 (Project 1) case study: the regime backtest |
+| `cross-asset-events.html` | Chapter 2 (Project 2) case study: the CPI and Fed event study |
+| `ai-bubble.html` | Chapter 3 (Project 3) case study: AI vs the dot-com and housing bubbles |
 | `style.css` | All the styling. Colours and fonts are the "design tokens" at the top |
 | `chart.js` | Draws Project 1's interactive growth-of-$1 chart |
 | `corr-chart.js` | Draws Project 2's interactive rolling-correlation chart |
@@ -33,9 +35,29 @@ Search the files for `EDIT:` to find each one.
 
 Right-click `index.html` → Open With → Safari or Chrome. Don't use Finder's spacebar preview: it shows the page without its styling.
 
-## Add another project
+The book flips on your Mac too. The page-turn between the home page and a chapter only shows on the live site (browsers allow it on real web addresses, not on files), and works in Chrome, Edge and Safari 18.2+; other browsers get a soft fade.
 
-In `index.html`, find `MORE PROJECTS`. Delete that line and the `END -->` line below it so the grid appears, then fill in the card. Copy the card once for each project.
+## How the book works
+
+Each `<section class="page">` inside `<main class="book">` in `index.html` is one page, in reading order. On a wide screen you see two pages side by side; on a phone, one at a time. You never have to number anything: page numbers, the numbers in the contents, and the label under the book all fill in by themselves.
+
+Three attributes on a page control the extras:
+
+- `data-title="Chapter 4"`: the label under the book when the page is open.
+- `data-head="Some heading"`: the small running head at the top of the page.
+- `data-plain`: no running head or page number (used on the covers).
+
+Any link to a page's `id`, like `<a href="#toolkit">`, flips the book to that page.
+
+## Add a chapter (a new project)
+
+1. Copy `ai-bubble.html`, rename it (say `my-project.html`) and replace the text. Change `<span>Chapter</span>3` to the new number.
+2. In `index.html`, copy the two `chapter-3` pages (the opener and the plate with the chart) and paste them after them. Change the ids to `chapter-4` and `chapter-4-plate`, then edit the text and the link.
+3. Add a line for it to the contents list (`toc-list`), copying the chapter 3 line.
+4. In `site.js`, add `"my-project.html": 4` to `ORDER`, so the page turns the right way.
+5. Add a "Next chapter" box at the bottom of the chapter 3 page, copying the one on chapter 2.
+
+If the new chapter makes the page count odd, `book.js` slips in a blank page so the back cover still lands at the back.
 
 ## Publish it free on GitHub Pages
 
