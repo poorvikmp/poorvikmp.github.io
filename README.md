@@ -26,10 +26,10 @@ Plain HTML, CSS and a little JavaScript. There's no framework and no build step,
 
 Search the files for `EDIT:` to find each one.
 
-1. **Links.** Replace `YOUR-PROFILE` (LinkedIn) and `YOUR-EMAIL` in `index.html`. (The GitHub links already use `poorvikmp`.)
-2. **Résumé.** Save your résumé in this folder as `resume.pdf`. The Résumé button links to it.
-3. **About.** Add a sentence about your school, degree or current role.
-4. **Project code.** Upload each project to its own GitHub repo, `regime-allocation`, `cross-asset-events` and `ai-bubble` (see below), so the "View on GitHub" buttons work.
+1. **About.** Add a sentence about your school, degree or current role in the preface.
+2. **Project code.** Upload each project to its own GitHub repo, `regime-allocation`, `cross-asset-events` and `ai-bubble` (see below), so the "View on GitHub" buttons work.
+
+Your email, LinkedIn and `resume.pdf` (the copy without your phone number) are already in. To update the résumé later, save the new PDF over `resume.pdf`.
 
 ## Preview it on your Mac
 
